@@ -1,0 +1,95 @@
+/* Reset and minimalist background */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container card */
+.player-card {
+    background-color: #ffffff;
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid #eaeaea;
+    width: 250px;
+}
+
+/* Minimalist button */
+button {
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+/* Controls layout */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #555;
+    gap: 10px;
+}
+
+/* Minimalist inputs */
+input[type="range"] {
+    accent-color: #333;
+    cursor: pointer;
+    flex-grow: 1;
+}
+
+input[type="number"] {
+    width: 48px;
+    padding: 4px 8px;
+    border: 1px solid #d1d1d1;
+    border-radius: 6px;
+    font-family: inherit;
+    text-align: center;
+    color: #333;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #333;
+}
+
+.volume-label {
+    min-width: 45px;
+    text-align: right;
+}

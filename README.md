@@ -1,0 +1,1 @@
+Página para reproducir un audio de asistencia.
