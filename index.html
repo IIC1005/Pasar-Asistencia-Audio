@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimal Audio Player with Intro</title>
+    <title>Minimal Audio Player with Intro & Video</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="player-card">
+        <!-- Main Video Player -->
+        <video id="backgroundVideo" src="./assets/dancing_tuc.mp4" muted loop playsinline></video>
+
+        <!-- Hidden Audio Elements -->
         <audio id="trumpetAudio"></audio> 
         <audio id="mainAudio" src="./assets/asistencia.mp3"></audio>
 

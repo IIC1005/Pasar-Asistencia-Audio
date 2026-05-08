@@ -7,7 +7,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 /* Container card */
@@ -21,7 +21,19 @@ body {
     align-items: center;
     gap: 20px;
     border: 1px solid #eaeaea;
-    width: 260px; /* Widened slightly to accommodate the dropdown */
+    width: 600px;
+    max-width: 90vw;
+}
+
+/* Video Styling */
+video {
+    width: 100%;
+    border-radius: 8px;
+    background-color: #000; 
+    display: block;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    aspect-ratio: 16/9;
+    object-fit: cover;
 }
 
 /* Minimalist button */

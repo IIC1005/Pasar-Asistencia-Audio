@@ -1,5 +1,6 @@
 const mainAudio = document.getElementById('mainAudio');
 const trumpetAudio = document.getElementById('trumpetAudio');
+const backgroundVideo = document.getElementById('backgroundVideo');
 const playButton = document.getElementById('playButton');
 const volumeControl = document.getElementById('volumeControl');
 const volumeDisplay = document.getElementById('volumeDisplay');
@@ -10,17 +11,14 @@ let playsRemaining = 0;
 let audioCtx;
 let gainNode;
 
-// 1. Initialize the Web Audio API for BOTH audio elements
 function initAudio() {
     if (audioCtx) return; 
 
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     
-    // Create the master volume node
     gainNode = audioCtx.createGain();
     gainNode.connect(audioCtx.destination);
 
-    // Connect BOTH the trumpet and main audio to the same volume controller
     const mainSource = audioCtx.createMediaElementSource(mainAudio);
     const trumpetSource = audioCtx.createMediaElementSource(trumpetAudio);
     
@@ -30,7 +28,6 @@ function initAudio() {
     gainNode.gain.value = parseFloat(volumeControl.value);
 }
 
-// 2. Handle Volume slider
 volumeControl.addEventListener('input', (event) => {
     const currentVolume = parseFloat(event.target.value);
     volumeDisplay.textContent = Math.round(currentVolume * 100) + '%';
@@ -42,13 +39,11 @@ volumeControl.addEventListener('input', (event) => {
     }
 });
 
-// Helper function to play the main asistencia audio
 function playMainAudio() {
     mainAudio.currentTime = 0;
     mainAudio.play();
 }
 
-// 3. Handle the Play Button Sequence
 playButton.addEventListener('click', () => {
     initAudio();
     
@@ -58,32 +53,38 @@ playButton.addEventListener('click', () => {
 
     playsRemaining = parseInt(repeatCountInput.value, 10);
     
-    // Pause anything currently playing to prevent overlapping sounds
+    // Pause and reset all media
     mainAudio.pause();
     trumpetAudio.pause();
+    backgroundVideo.pause();
+    backgroundVideo.currentTime = 0;
 
     const selectedTrumpet = trumpetSelect.value;
 
     if (selectedTrumpet === 'none') {
-        // If "No Sound" is selected, skip straight to the main audio
+        backgroundVideo.play();
         playMainAudio();
     } else {
-        // Otherwise, load the specific trumpet sound and play it
         trumpetAudio.src = selectedTrumpet;
         trumpetAudio.currentTime = 0;
         trumpetAudio.play();
     }
 });
 
-// 4. Sequence Logic: When the trumpet finishes, play the main audio
+// When the trumpet finishes, play the main audio AND start the video
 trumpetAudio.addEventListener('ended', () => {
+    backgroundVideo.play();
     playMainAudio();
 });
 
-// 5. Loop Logic: Only applies to the main asistencia audio
+// Loop Logic: Applies to the main asistencia audio and shuts down the video
 mainAudio.addEventListener('ended', () => {
     if (playsRemaining > 0) {
         playsRemaining--; 
+        // Restart audio. The video will continue looping naturally without restarting.
         playMainAudio(); 
+    } else {
+        // When all repeats are completely finished, pause the video
+        backgroundVideo.pause();
     }
-});
+}); 
