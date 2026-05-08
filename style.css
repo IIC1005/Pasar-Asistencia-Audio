@@ -21,7 +21,7 @@ body {
     align-items: center;
     gap: 20px;
     border: 1px solid #eaeaea;
-    width: 250px;
+    width: 260px; /* Widened slightly to accommodate the dropdown */
 }
 
 /* Minimalist button */
@@ -84,9 +84,21 @@ input[type="number"] {
     color: #333;
 }
 
-input[type="number"]:focus {
+input[type="number"]:focus, select:focus {
     outline: none;
     border-color: #333;
+}
+
+/* Dropdown styling */
+select {
+    flex-grow: 1;
+    padding: 4px 8px;
+    border: 1px solid #d1d1d1;
+    border-radius: 6px;
+    font-family: inherit;
+    color: #333;
+    background-color: #fff;
+    cursor: pointer;
 }
 
 .volume-label {

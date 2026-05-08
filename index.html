@@ -3,26 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimal Audio Player with Boost</title>
+    <title>Minimal Audio Player with Intro</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="player-card">
-        <audio id="myAudio" src="asistencia.mp3"></audio>
+        <audio id="trumpetAudio"></audio> 
+        <audio id="mainAudio" src="./assets/asistencia.mp3"></audio>
 
-        <button id="playButton">Play Asistencia</button>
+        <button id="playButton">Play Sequence</button>
 
         <div class="controls">
+            <!-- Trumpet Selector -->
+            <div class="control-group">
+                <label for="trumpetSelect">Intro</label>
+                <select id="trumpetSelect">
+                    <option value="none">No Sound</option>
+                    <option value="./assets/trumpets/trumpet1.mp3" selected>Trumpet 1</option>
+                    <option value="./assets/trumpets/trumpet2.mp3">Trumpet 2</option>
+                </select>
+            </div>
+
+            <!-- Volume Control -->
             <div class="control-group">
                 <label for="volumeControl">Vol</label>
-                <input type="range" id="volumeControl" min="0" max="3" step="0.1" value="1">
+                <input type="range" id="volumeControl" min="0" max="5" step="0.1" value="1">
                 <span class="volume-label" id="volumeDisplay">100%</span>
             </div>
 
+            <!-- Repeat Control -->
             <div class="control-group">
                 <label for="repeatCount">Repeat</label>
-                <input type="number" id="repeatCount" min="0" value="1">
+                <input type="number" id="repeatCount" min="0" value="2">
             </div>
         </div>
     </div>
